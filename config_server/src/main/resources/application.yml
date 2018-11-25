@@ -1,5 +1,15 @@
 server:
-  port: 8888
+    port: 8888
 spring:
-  application:
-    name: config-server
+    application:
+        name: config-server
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/mystic-cg/SpringCloudConfig
+                    search-paths: respo
+                    username:
+                    password:
+            label: master
+
