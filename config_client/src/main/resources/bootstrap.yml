@@ -8,3 +8,13 @@ spring:
             label: master
             profile: dev
             uri: http://localhost:8888/
+            discovery:
+                # stand for that it will read values from config server
+                enabled: true
+                # the application name of config server
+                serviceId: config-server
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
