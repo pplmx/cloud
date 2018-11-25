@@ -1,0 +1,8 @@
+rootProject.name = 'cloud'
+include 'eureka_server'
+include 'eureka_client'
+include 'service_ribbon'
+include 'service_feign'
+include 'service_zuul'
+include 'config_server'
+

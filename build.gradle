@@ -1,0 +1,49 @@
+apply plugin: 'java'
+group 'com.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+buildscript {
+    ext {
+        // define some params
+        springBootVersion = '2.0.6.RELEASE'
+        springCloudVersion = 'Finchley.SR2'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+    // set encode
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+    dependencyManagement {
+        imports {
+            //spring bom helps us to declare dependencies without specifying version numbers.
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+}
+
