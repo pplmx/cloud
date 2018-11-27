@@ -13,8 +13,23 @@ spring:
                 enabled: true
                 # the application name of config server
                 serviceId: config-server
+        bus:
+            enabled: true
+            trace:
+                enabled: true
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
 
 eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka/
+management:
+    endpoints:
+        # spring-boot-starter-actuator
+        web:
+            exposure:
+                include: bus-refresh
