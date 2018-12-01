@@ -1,3 +1,4 @@
+
 server:
     port: 8761
 spring:
@@ -5,7 +6,7 @@ spring:
         name: eureka-server
 eureka:
     instance:
-        hostname: localhost
+        hostname: master
     client:
         # The following two values indicate that it is server
         register-with-eureka: false
