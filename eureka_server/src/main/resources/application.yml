@@ -1,7 +1,12 @@
+spring:
+    profiles:
+        active: master
 
+---
 server:
     port: 8761
 spring:
+    profiles: master
     application:
         name: eureka-server
 eureka:
@@ -12,4 +17,21 @@ eureka:
         register-with-eureka: false
         fetch-registry: false
         serviceUrl:
-            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+            defaultZone: http://slave:18761/eureka/
+
+---
+server:
+    port: 18761
+spring:
+    profiles: slave
+    application:
+        name: eureka-server
+eureka:
+    instance:
+        hostname: slave
+    client:
+        # The following two values indicate that it is server
+        register-with-eureka: false
+        fetch-registry: false
+        serviceUrl:
+            defaultZone: http://master:8761/eureka/
