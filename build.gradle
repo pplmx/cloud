@@ -6,7 +6,7 @@ sourceCompatibility = 1.8
 buildscript {
     ext {
         // define some params
-        springBootVersion = '2.4.3'
+        springBootVersion = '2.4.4'
         springCloudVersion = 'Finchley.SR2'
     }
     repositories {
